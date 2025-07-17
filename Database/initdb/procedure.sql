@@ -71,3 +71,12 @@ CREATE PROCEDURE add_product_to_invoice(IN p_id INT, IN i_id INT, IN quantity IN
 BEGIN
     INSERT INTO Product_Invoice (P_ID, I_ID, Quantity) VALUES (p_id, i_id, quantity);
 END;
+
+--get total price of invoice
+create PROCEDURE get_total_price_of_invoice(IN i_id INT)
+BEGIN
+    SELECT SUM(p.price * pi.Quantity) AS total_price
+    FROM Product p
+    JOIN Product_Invoice pi ON p.P_ID = pi.P_ID
+    WHERE pi.I_ID = i_id;
+END;
