@@ -3,6 +3,18 @@ USE `schema`;
 
 -- User Procedures
 
+--verify user credentials --return true
+create PROCEDURE verify_user_credentials(IN p_username VARCHAR(50), IN p_password VARCHAR(255))
+BEGIN
+    DECLARE user_count INT;
+    SELECT COUNT(*) INTO user_count FROM User WHERE username = p_username AND password = p_password;
+    IF user_count > 0 THEN
+        SELECT 'true' AS result;
+    ELSE
+        SELECT 'false' AS result;
+    END IF;
+END;
+
 --add product to inventory procedure
 CREATE PROCEDURE add_product_to_inventory(IN p_name VARCHAR(100), IN dept VARCHAR(50), IN price DECIMAL(10, 2), IN quantity INT)
 BEGIN
