@@ -16,7 +16,7 @@ BEGIN
 END;
 
 --add product to inventory procedure
-CREATE PROCEDURE add_product_to_inventory(IN p_name VARCHAR(100), IN dept VARCHAR(50), IN price DECIMAL(10, 2), IN quantity INT)
+CREATE PROCEDURE add_product_to_inventory(IN p_name VARCHAR(100), IN dept VARCHAR(50), IN price DECIMAL(10, 2), IN quantity INT, IN distributer VARCHAR(100))
 BEGIN
     INSERT INTO Product (P_name, Dept, price, Quantity) VALUES (p_name, dept, price, quantity);
 END;
@@ -54,7 +54,7 @@ BEGIN
     SELECT * FROM Product;
 END;
 
---set prodcut quantity
+--set produtt quantity
 CREATE PROCEDURE set_product_quantity(IN p_id INT, IN new_quantity INT)
 BEGIN
     UPDATE Product SET Quantity = new_quantity WHERE P_ID = p_id;

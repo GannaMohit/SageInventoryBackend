@@ -5,6 +5,7 @@ CREATE TABLE Product (
     Dept VARCHAR(50),
     price DECIMAL(10, 2) NOT NULL,
     Quantity INT DEFAULT 0
+    Distributer VARCHAR(100) DEFAULT NULL,
 );
 
 -- User Table
